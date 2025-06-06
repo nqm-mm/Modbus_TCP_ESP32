@@ -1,0 +1,18 @@
+
+{"address":[{"addressRead" : 100},{"addressWrite" : 110}]}
+
+{"100": 123,"101": 456,"102": 789,"103": 321,"104": 654,"105": 987,"106": 111,"107": 222,"108": 333,"109": 444}
+
+{"setValue":["address":110,"value":123]}
+
+{"IP":[192,168,1,4]}
+
+{"role":1/0}// 1 for master, 0 for slave
+
+{"wifiConfig":[{"ssid":"yourSSID", "password":"yourPassword"}]}
+
+
+trang consolelog in ra những thông mà ESP32 gửi thông web socket viết bẳng HTML/CSS/Script
+- cửa sổ consolelog sẽ hiện thị những thông tin
+- input để nhập các lệnh điều khiển ESP32
+- input nhập địa chỉ IP của ESP32
