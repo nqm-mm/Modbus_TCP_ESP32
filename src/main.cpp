@@ -1,10 +1,13 @@
-/*
-  Modbus-Arduino Example - Master Modbus IP Client (ESP8266/ESP32)
-  Read Holding Register from Server device
+/* Modbus TCP and WebSocket on ESP32
+ * Chương trình mẫu Modbus IP trên ESP8266/ESP32
+ * Chương trình này sử dụng thư viện ModbusIP_ESP8266 để giao tiếp với thiết bị Modbus Slave.
+ * Nó có thể hoạt động ở chế độ Master hoặc Slave, tùy thuộc vào giá trị của biến 'role'.
+ * Chương trình cũng cung cấp giao diện WebSocket để tương tác với các lệnh từ máy chủ.
+ * Nó có thể đọc và ghi các thanh ghi Holding Register, cũng như quản lý các tệp trên hệ thống tập tin LittleFS.
+ * Chương trình sử dụng WiFi để kết nối với mạng và có thể nhận lệnh từ Serial hoặc WebSocket.
+ * Chương trình này có thể được sử dụng để giám sát và điều khiển các thiết bị Modbus từ xa thông qua giao diện web hoặc Serial.
+ */
 
-  (c)2018 Alexander Emelianov (a.m.emelianov@gmail.com)
-  https://github.com/emelianov/modbus-esp8266
-*/
 //slave là server, master là client
 //1 thanh ghi là 2 byte = 1 word
 //2 thanh ghi là 4 byte = 1 dword
@@ -60,7 +63,7 @@ void setRole(bool isMaster) {
 if(isMaster) {//master
     mb.client();
     if (mb.isConnected(remote)) {   // Check if connection to Modbus Slave is established
-    Serial.println("Connect successfully. Reading Holding Registers from Slave...");
+      Serial.println("Connect successfully. Reading Holding Registers from Slave...");
     }
   } else {//slave
     mb.server(502); // Start Modbus Server on port 502
