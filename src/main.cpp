@@ -194,8 +194,11 @@ void readRegisters() {
   if (role) { // If the role is master
     for (int i = 0; i < regReadCount; i++) {
         int addr = AddrReadList[i];
-        mb.readHreg(remote, addr, &ValueReadList[i], 1); // Đọc giá trị từ slave
-        Serial.printf("[%d]: %d", addr, ValueReadList[i]);
+        if (mb.readHreg(remote, addr, &ValueReadList[i], 1)) { // Đọc giá trị từ slave, kiểm tra thành công
+          Serial.printf("[%d]: %d ", addr, ValueReadList[i]);
+        } else {
+          Serial.printf("[%d]: Error ", addr);
+        }
     }
     Serial.println();
   } else {
